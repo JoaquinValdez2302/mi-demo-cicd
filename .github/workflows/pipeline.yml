@@ -1,4 +1,4 @@
-name: CI/CD Pipeline Demo
+name: Demostracion CI/CD en Vivo
 
 on:
   push:
@@ -7,18 +7,18 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  build-and-test:
+  # ==========================================
+  # ETAPA 1: INTEGRACIÓN CONTINUA (CI)
+  # ==========================================
+  ci-pipeline:
+    name: 1. Integración Continua (Build & Test)
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x, 22.x]
 
     steps:
     - name: 📥 Clonar repositorio
       uses: actions/checkout@v4
 
-    - name: ⚙️ Configurar Node.js
+    - name: ⚙️ Configurar Node.js v22
       uses: actions/setup-node@v4
       with:
         node-version: '22.x'
@@ -28,20 +28,27 @@ jobs:
       with:
         version: latest
 
-    - name: 📦 Instalar dependencias con pnpm
+    - name: 📦 Instalar dependencias
       run: pnpm install --frozen-lockfile
 
-    - name: 🧪 Ejecutar pruebas unitarias
+    - name: 🧪 Ejecutar pruebas automáticas
       run: pnpm test
 
-  deploy:
-    needs: build-and-test
+  # ==========================================
+  # ETAPA 2: ENTREGA CONTINUA (CD)
+  # ==========================================
+  cd-pipeline:
+    name: 2. Entrega Continua (Despliegue)
+    needs: ci-pipeline # <--- ESTO ES LA CLAVE: Solo corre si CI pasa
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
     - name: 🚀 Simular Despliegue a Producción
       run: |
-        echo "¡Las pruebas pasaron exitosamente!"
-        echo "Desplegando la aplicación en el servidor de destino..."
-        echo "Despliegue completado con éxito."
+        echo "=================================================="
+        echo " ¡CI EXITOSO! Las pruebas pasaron correctamente."
+        echo " Iniciando fase de Entrega Continua (CD)..."
+        echo " Empaquetando y enviando artefacto al entorno..."
+        echo " ¡Despliegue completado con éxito en producción!"
+        echo "=================================================="
