@@ -11,5 +11,5 @@ module.exports = app;
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Servidor corriendo en puerto ${PORT}`);
-    });
+    };
 }
