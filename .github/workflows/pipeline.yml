@@ -28,8 +28,10 @@ jobs:
       with:
         version: latest
 
-    - name: 📦 Instalar dependencias
-      run: pnpm install --frozen-lockfile --config.enable-pre-post-scripts=true
+    - name: 📦 Instalar dependencias con pnpm
+      run: pnpm install --frozen-lockfile --unsafe-perm=true
+      env:
+        PNPM_DISABLE_BUILDS_WARNING: "true"
 
     - name: 🔍 Ejecutar Linter (Validación de Sintaxis)
       run: pnpm lint
