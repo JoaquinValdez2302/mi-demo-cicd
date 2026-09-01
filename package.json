@@ -4,9 +4,15 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "node --test test.js"
+    "lint": "npx eslint .",
+    "test": "node --test app.test.js"
   },
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "eslint": "^10.9.1",
+    "jest": "^30.5.0",
+    "supertest": "^7.2.2"
   }
 }

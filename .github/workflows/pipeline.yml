@@ -31,6 +31,9 @@ jobs:
     - name: 📦 Instalar dependencias
       run: pnpm install --frozen-lockfile
 
+    - name: 🔍 Ejecutar Linter (Validación de Sintaxis)
+      run: pnpm lint
+      
     - name: 🧪 Ejecutar pruebas automáticas
       run: pnpm test
 
