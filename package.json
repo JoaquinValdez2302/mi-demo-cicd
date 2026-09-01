@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "lint": "npx eslint .",
-    "test": "node --test app.test.js"
+    "test": "node --test test.js"
   },
   "dependencies": {
     "express": "^4.19.2"
