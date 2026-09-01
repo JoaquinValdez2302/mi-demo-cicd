@@ -13,7 +13,7 @@ jobs:
   ci-pipeline:
     name: 1. Integración Continua (Build & Test)
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: 📥 Clonar repositorio
       uses: actions/checkout@v4
@@ -39,8 +39,9 @@ jobs:
   # ==========================================
   cd-pipeline:
     name: 2. Entrega Continua (Despliegue)
-    needs: ci-pipeline # <--- ESTO ES LA CLAVE: Solo corre si CI pasa
+    needs: ci-pipeline # <---  Solo corre si CI pasa
     runs-on: ubuntu-latest
+    environment: production
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
