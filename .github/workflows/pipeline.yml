@@ -29,11 +29,11 @@ jobs:
         version: latest
 
     - name: 📦 Instalar dependencias
-      run: pnpm install --frozen-lockfile
+      run: pnpm install --frozen-lockfile --unsafe-perm
 
     - name: 🔍 Ejecutar Linter (Validación de Sintaxis)
       run: pnpm lint
-      
+
     - name: 🧪 Ejecutar pruebas automáticas
       run: pnpm test
 
