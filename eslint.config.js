@@ -5,8 +5,9 @@ export default [
     {
         languageOptions: {
             ecmaVersion: 'latest',
-            sourceType: 'commonjs',
+            sourceType: 'module', // Cambiado a module para evitar el error de import/export
             globals: {
+                console: 'readonly', // Permitir el uso de console.log
                 require: 'readonly',
                 module: 'readonly',
                 process: 'readonly',
