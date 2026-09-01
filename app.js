@@ -15,3 +15,4 @@ if (require.main === module) {
 }
 
 
+texto de prueba, debe saltar error y no aplicar el commit
