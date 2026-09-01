@@ -13,3 +13,6 @@ if (require.main === module) {
         console.log(`Servidor corriendo en puerto ${PORT}`);
     });
 }
+
+
+texto de prueba, debe saltar error y no aplicar el commit
