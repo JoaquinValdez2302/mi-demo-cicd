@@ -8,6 +8,7 @@ app.get('/', (req, res) => {
 
 module.exports = app;
 
+error texto
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Servidor corriendo en puerto ${PORT}`);
